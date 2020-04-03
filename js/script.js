@@ -11,6 +11,19 @@ const itemsPerPage = 10;
 
 
 /**
+ * Generate and append a search bar to the page header
+ */
+const appendSearchBar = () => {
+   const div = document.createElement('DIV');
+   div.innerHTML = `<input placeholder="Search for students...">
+                    <button>Search</button>`;
+   div.className = 'student-search';
+   const header = document.querySelector('.page-header');
+   header.appendChild(div);
+}
+
+
+/**
  * Dynamically divide student list items into pages and set display value of items not on current page to 'none' 
  * @param {Collection} list - list items to be paginated
  * @param {Number} page - page number
@@ -54,6 +67,9 @@ const appendPageLinks = (list) => {
    navDiv.appendChild(ul);
    document.querySelector('.page').appendChild(navDiv);
 }
+
+// Append search bar 
+appendSearchBar();
 
 
 // Show page 1 by default
