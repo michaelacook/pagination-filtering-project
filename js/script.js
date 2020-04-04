@@ -1,19 +1,22 @@
 /*
 Full Stack JavaScript project 2 - pagination and filtering 
 
-Michael Cook
+by Michael Cook
 
 I am aiming for "Exceeds Expectations" but will accept "Meets Expectations"
 */
 
 
-
-/* Globals - all student list items and number of items to display per page.
+/* GLOBAL VARIABLES - all student list items and number of items to display per page.
 listItems is defined with 'var' because it is reassigned when the user filters the list items,
 and it needs to be globally available, making 'var' appropriate
 */
 var listItems = document.querySelector('.student-list').getElementsByTagName('li');
 const itemsPerPage = 10;
+
+
+
+/* ------------------------------------------------- FUNCTIONS ------------------------------------------------- */
 
 
 /**
@@ -138,6 +141,8 @@ const setDefaultList = () => listItems = document.querySelector('.student-list')
  * @param {String} searchKey - search term entered by user in search field
  */
 const filter = (searchKey) => {
+
+   // calling setDefaultList each time prevents filtering of already filtered data, which would prevent some search results from displaying
    setDefaultList();
    if (searchKey) {
       setFilteredList(searchKey);
@@ -150,6 +155,11 @@ const filter = (searchKey) => {
 }
 
 
+
+
+/* ------------------------------------------------- FUNCTION CALLS ------------------------------------------------- */
+
+
 // Append search bar 
 appendSearchBar();
 
@@ -160,6 +170,12 @@ showPage(listItems, 1);
 
 // Add pagination nav links
 appendPageLinks(listItems);
+
+
+
+
+
+/* ------------------------------------------------- EVENT LISTENERS ------------------------------------------------- */
 
 
 // Listen for search button click, filter results on click if search term entered
