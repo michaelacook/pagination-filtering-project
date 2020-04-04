@@ -148,8 +148,6 @@ const filter = (searchKey) => {
    setDefaultList();
    if (searchKey) {
       setFilteredList(searchKey);
-   } else {
-      setDefaultList();
    }
    removePageLinks();
    showPage(listItems, 1);
