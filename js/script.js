@@ -106,7 +106,10 @@ const appendSearchBar = () => {
  * Remove pagination nav links. Needed to prevent extra pagination navs from being added when filtering 
  * Without this function, each time the user filters or unfilters list items a new pagination nav would be appended to the page
  */
-const removePageLinks = () => document.querySelector('.pagination').remove();
+const removePageLinks = () => {
+   const nav = document.querySelector('.pagination');
+   if (nav) nav.remove();
+}
 
 
 /**
@@ -150,7 +153,9 @@ const filter = (searchKey) => {
    }
    removePageLinks();
    showPage(listItems, 1);
-   appendPageLinks(listItems);
+   if (listItems.length > itemsPerPage) {
+      appendPageLinks(listItems);
+   }
 }
 
 
