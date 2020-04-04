@@ -114,7 +114,6 @@ const removePageLinks = () => {
 
 /**
  * Set listItems variable to subset of filtered items
- * @param {Collection} list - list of students to be filtered 
  * @param {String} searchKey - the search value entered by the user 
  */
 const setFilteredList = (searchKey) => {
@@ -157,8 +156,6 @@ const filter = (searchKey) => {
 }
 
 
-
-
 /* ------------------------------------------------- FUNCTION CALLS ------------------------------------------------- */
 
 
@@ -172,8 +169,6 @@ showPage(listItems, 1);
 
 // Add pagination nav links
 appendPageLinks(listItems);
-
-
 
 
 
