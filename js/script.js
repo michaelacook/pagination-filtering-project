@@ -7,6 +7,7 @@ I am aiming for "Exceeds Expectations" but will accept "Meets Expectations"
 */
 
 
+
 /* GLOBAL VARIABLES - all student list items and number of items to display per page.
 listItems is defined with 'var' because it is reassigned when the user filters the list items,
 and it needs to be globally available, making 'var' appropriate
@@ -25,7 +26,6 @@ const itemsPerPage = 10;
  * @param {Number} page - page number
  */
 const showPage = (list, page) => {
-   console.log(page)
    const startIndex = (page * itemsPerPage) - itemsPerPage; 
    const endIndex = startIndex + 10;
    for (let i = 0; i < list.length; i++) {
@@ -141,7 +141,6 @@ const setDefaultList = () => listItems = document.querySelector('.student-list')
  * @param {String} searchKey - search term entered by user in search field
  */
 const filter = (searchKey) => {
-
    // calling setDefaultList each time prevents filtering of already filtered data, which would prevent some search results from displaying
    setDefaultList();
    if (searchKey) {
