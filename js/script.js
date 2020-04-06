@@ -78,8 +78,8 @@ function addNavEventListeners() {
    for (let i = 0; i < links.length; i++) {
       let a = links[i];
       a.addEventListener('click', e => {
-         for (let j = 0; j < links.length; j++) {
-            links[j].classList.remove('active');
+         for (let i = 0; i < links.length; i++) {
+            links[i].classList.remove('active');
          }
          a.className = 'active';
          const page = parseInt(a.getAttribute('data-page'));
@@ -138,6 +138,24 @@ const setDefaultList = () => listItems = document.querySelector('.student-list')
 
 
 /**
+ * Append no results message to the page-header div when listItems length is 0, else remove no results message if it exists
+ * Called inside the filter function
+ */
+const toggleNoResultsMessage = () => {
+   const p = document.querySelector('p[data-js="no-results"]');
+   if (listItems.length === 0 && !p) {
+      const header = document.querySelector('.page');
+      const msg = document.createElement('p');
+      msg.textContent = "No results";
+      msg.setAttribute('data-js', 'no-results');
+      header.appendChild(msg);
+   } else if (listItems.length > 0 && p) {
+      p.remove();
+   }
+}
+
+
+/**
  * Calls a series of functions in sequence to correctly make the filtering feature work
  * If no searchKey value given or searchKey is an empty string, show page defaults
  * @param {String} searchKey - search term entered by user in search field
@@ -153,6 +171,7 @@ const filter = (searchKey) => {
    if (listItems.length > itemsPerPage) {
       appendPageLinks(listItems);
    }
+   toggleNoResultsMessage();
 }
 
 
